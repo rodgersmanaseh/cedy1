@@ -1,0 +1,170 @@
+{
+  "site": {
+    "name": "Cedarmond TV",
+    "tagline": "Kenya's Premier News Platform",
+    "description": "Stay informed with comprehensive coverage of politics, education, entertainment, celebrity gossip, football, and breaking news from Kenya and beyond.",
+    "url": "https://cedarmondtv.co.ke",
+    "logo": "/logo.png",
+    "favicon": "/favicon.ico",
+    "language": "en",
+    "locale": "en_KE"
+  },
+  "contact": {
+    "email": "news@cedarmondtv.co.ke",
+    "phone": "+254 700 123 456",
+    "address": "Nairobi, Kenya",
+    "coordinates": {
+      "latitude": -1.2921,
+      "longitude": 36.8219
+    }
+  },
+  "social": {
+    "facebook": "https://facebook.com/cedarmondtv",
+    "twitter": "https://twitter.com/cedarmondtv",
+    "instagram": "https://instagram.com/cedarmondtv",
+    "youtube": "https://youtube.com/cedarmondtv",
+    "whatsapp": "https://wa.me/254700123456"
+  },
+  "categories": [
+    {
+      "id": "politics",
+      "name": "Politics",
+      "slug": "politics",
+      "description": "Political news, government updates, and policy analysis",
+      "color": "#DC2626",
+      "icon": "fas fa-landmark"
+    },
+    {
+      "id": "education",
+      "name": "Education",
+      "slug": "education", 
+      "description": "Educational reforms, school updates, and learning innovations",
+      "color": "#2563EB",
+      "icon": "fas fa-graduation-cap"
+    },
+    {
+      "id": "entertainment",
+      "name": "Entertainment",
+      "slug": "entertainment",
+      "description": "Music, movies, arts, and cultural events",
+      "color": "#7C3AED",
+      "icon": "fas fa-music"
+    },
+    {
+      "id": "gossip",
+      "name": "Celebrity Gossip",
+      "slug": "celebrity-gossip",
+      "description": "Celebrity news, entertainment industry updates",
+      "color": "#EC4899",
+      "icon": "fas fa-star"
+    },
+    {
+      "id": "football",
+      "name": "Football",
+      "slug": "football",
+      "description": "Local and international football coverage",
+      "color": "#059669",
+      "icon": "fas fa-futbol"
+    }
+  ],
+  "authors": [
+    {
+      "id": "editorial",
+      "name": "Editorial Team",
+      "bio": "Cedarmond TV's experienced editorial team",
+      "avatar": "/avatars/editorial.jpg",
+      "social": {
+        "twitter": "@cedarmondtv"
+      }
+    },
+    {
+      "id": "sarah-kimani",
+      "name": "Sarah Kimani",
+      "bio": "Political correspondent with over 10 years of experience covering Kenyan politics",
+      "avatar": "/avatars/sarah-kimani.jpg",
+      "specialties": ["politics", "government"]
+    },
+    {
+      "id": "james-mwangi",
+      "name": "James Mwangi",
+      "bio": "Technology and education reporter focusing on digital transformation",
+      "avatar": "/avatars/james-mwangi.jpg",
+      "specialties": ["education", "technology"]
+    },
+    {
+      "id": "peter-otieno",
+      "name": "Peter Otieno",
+      "bio": "Sports journalist covering football and athletics",
+      "avatar": "/avatars/peter-otieno.jpg",
+      "specialties": ["football", "sports"]
+    }
+  ],
+  "features": {
+    "newsletter": {
+      "enabled": true,
+      "provider": "buttondown",
+      "apiKey": "BUTTONDOWN_API_KEY"
+    },
+    "comments": {
+      "enabled": true,
+      "provider": "giscus",
+      "config": {
+        "repo": "cedarmondtv/discussions",
+        "repoId": "REPO_ID",
+        "category": "General",
+        "categoryId": "CATEGORY_ID"
+      }
+    },
+    "search": {
+      "enabled": true,
+      "provider": "fuse",
+      "threshold": 0.3
+    },
+    "analytics": {
+      "enabled": false,
+      "provider": "google",
+      "trackingId": "GA_TRACKING_ID"
+    },
+    "seo": {
+      "sitemap": true,
+      "robotsTxt": true,
+      "openGraph": true,
+      "twitterCards": true
+    }
+  },
+  "content": {
+    "postsPerPage": 12,
+    "excerptLength": 160,
+    "readingTime": {
+      "wordsPerMinute": 200
+    },
+    "relatedPosts": {
+      "enabled": true,
+      "count": 3
+    }
+  },
+  "admin": {
+    "defaultCredentials": {
+      "username": "admin",
+      "password": "cedarmond2024"
+    },
+    "session": {
+      "duration": "24h"
+    }
+  },
+  "deployment": {
+    "platform": "netlify",
+    "branch": "main",
+    "buildCommand": "npm run build",
+    "publishDirectory": "dist/public"
+  },
+  "performance": {
+    "imageOptimization": true,
+    "lazyLoading": true,
+    "caching": {
+      "articles": "5m",
+      "images": "1d",
+      "static": "1w"
+    }
+  }
+}
