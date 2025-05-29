@@ -94,6 +94,42 @@ export class MemStorage implements IStorage {
         tags: ["technology", "startups", "innovation", "silicon savannah"],
         status: "published",
         readTime: 7
+      },
+      {
+        title: "Lupita Nyong'o Wins International Film Award",
+        slug: "lupita-nyongo-wins-international-film-award",
+        excerpt: "Kenyan-born actress Lupita Nyong'o continues to make Kenya proud on the international stage with her latest achievement in cinema.",
+        content: "# Lupita Nyong'o Wins International Film Award\n\nKenyan-born actress Lupita Nyong'o has once again brought pride to Kenya by winning the prestigious International Film Award for her outstanding performance in her latest film project.\n\nThe Academy Award-winning actress has consistently represented Kenya on the global stage, and this latest recognition further solidifies her position as one of Africa's most celebrated talents in the entertainment industry.\n\n## A Career of Excellence\n\nSince her breakthrough role in '12 Years a Slave,' Lupita has continued to choose diverse and meaningful projects that showcase her range as an actress while also highlighting important social issues.\n\nHer dedication to her craft and her commitment to using her platform for positive change continues to inspire young Kenyans and Africans worldwide.",
+        category: "entertainment",
+        author: "Grace Wanjiku",
+        featuredImage: "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=600",
+        tags: ["entertainment", "lupita nyongo", "film", "kenya"],
+        status: "published",
+        readTime: 3
+      },
+      {
+        title: "Kenyan Celebrity Chef Opens New Restaurant in Nairobi",
+        slug: "kenyan-celebrity-chef-opens-restaurant-nairobi",
+        excerpt: "Award-winning chef brings authentic Kenyan cuisine to new heights with the opening of an innovative restaurant in the heart of Nairobi.",
+        content: "# Kenyan Celebrity Chef Opens New Restaurant in Nairobi\n\nRenowned Kenyan chef has opened a new upscale restaurant in Nairobi's central business district, featuring a unique blend of traditional Kenyan flavors with modern culinary techniques.\n\nThe restaurant, which opened its doors last weekend, has already attracted food enthusiasts and celebrities alike, with its innovative approach to East African cuisine.\n\n## Celebrating Kenyan Flavors\n\nThe menu features reimagined versions of classic Kenyan dishes, using locally sourced ingredients and contemporary presentation styles. From elevated ugali preparations to gourmet nyama choma, the restaurant offers a fresh perspective on familiar flavors.\n\nThe chef's commitment to supporting local farmers and suppliers has also been praised, as the restaurant sources 90% of its ingredients from Kenyan producers.",
+        category: "gossip",
+        author: "Mary Njeri",
+        featuredImage: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=600",
+        tags: ["celebrity", "food", "restaurant", "nairobi"],
+        status: "published",
+        readTime: 4
+      },
+      {
+        title: "New Digital Learning Platform Launched for Kenyan Students",
+        slug: "digital-learning-platform-kenyan-students",
+        excerpt: "Revolutionary online education platform aims to provide quality learning resources to students across Kenya, bridging the urban-rural education gap.",
+        content: "# New Digital Learning Platform Launched for Kenyan Students\n\nA groundbreaking digital learning platform has been launched to provide comprehensive educational resources to students across Kenya, with a particular focus on bridging the gap between urban and rural educational opportunities.\n\nThe platform, developed in partnership with leading Kenyan universities and international technology companies, offers courses aligned with the Kenyan curriculum from primary through tertiary levels.\n\n## Features and Accessibility\n\nThe platform includes interactive lessons, virtual laboratories, and assessment tools designed to work even on basic smartphones and with limited internet connectivity. This ensures that students in remote areas can access quality educational content.\n\nTeachers across the country have already begun integrating the platform into their lesson plans, with training workshops being conducted in all 47 counties.\n\n## Impact on Education\n\nEarly adoption rates have exceeded expectations, with over 50,000 students registering in the first month. The platform is expected to play a crucial role in supporting Kenya's education goals and preparing students for the digital economy.",
+        category: "education",
+        author: "Dr. Joseph Kariuki",
+        featuredImage: "https://images.unsplash.com/photo-1509062522246-3755977927d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=600",
+        tags: ["education", "digital learning", "technology", "students"],
+        status: "published",
+        readTime: 6
       }
     ];
 

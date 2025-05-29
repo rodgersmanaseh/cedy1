@@ -10,6 +10,7 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { ChevronDown } from "lucide-react";
 import { useLocation } from "wouter";
+import type { Article } from "@shared/schema";
 
 export default function Home() {
   const [location, setLocation] = useLocation();
@@ -18,7 +19,7 @@ export default function Home() {
   
   const [selectedCategory, setSelectedCategory] = useState(categoryFromUrl);
   const [page, setPage] = useState(1);
-  const [allArticles, setAllArticles] = useState([]);
+  const [allArticles, setAllArticles] = useState<Article[]>([]);
   const [hasMore, setHasMore] = useState(true);
   
   const { data: articles = [], isLoading } = useArticles({
@@ -169,15 +170,19 @@ export default function Home() {
             ) : (
               <>
                 <div className="space-y-6">
-                  {articles.map((article) => (
-                    <ArticleCard key={article.id} article={article} />
+                  {(page === 1 ? articles : allArticles).map((article) => (
+                    <ArticleCard key={`${article.id}-${article.slug}`} article={article} />
                   ))}
                 </div>
 
-                {articles.length === 9 && (
+                {hasMore && (
                   <div className="text-center mt-8">
-                    <Button onClick={handleLoadMore} className="bg-red-600 hover:bg-red-700">
-                      Load More Articles
+                    <Button 
+                      onClick={handleLoadMore} 
+                      disabled={isLoading}
+                      className="bg-red-600 hover:bg-red-700"
+                    >
+                      {isLoading ? "Loading..." : "Load More Articles"}
                       <ChevronDown className="ml-2 h-4 w-4" />
                     </Button>
                   </div>
