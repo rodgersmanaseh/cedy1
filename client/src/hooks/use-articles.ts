@@ -15,6 +15,11 @@ export function useArticles(options: UseArticlesOptions = {}) {
   if (featured) {
     return useQuery<Article[]>({
       queryKey: ["/api/articles/featured", { limit }],
+      queryFn: async () => {
+        const response = await fetch(`/api/articles/featured?limit=${limit}`);
+        if (!response.ok) throw new Error('Failed to fetch featured articles');
+        return response.json();
+      },
       staleTime: 5 * 60 * 1000,
     });
   }
@@ -27,10 +32,15 @@ export function useArticles(options: UseArticlesOptions = {}) {
     queryParams.set("category", category);
   }
 
-  const queryKey = [`/api/articles?${queryParams.toString()}`];
+  const queryKey = ["/api/articles", { category, status, limit, offset }];
 
   return useQuery<Article[]>({
     queryKey,
+    queryFn: async () => {
+      const response = await fetch(`/api/articles?${queryParams.toString()}`);
+      if (!response.ok) throw new Error('Failed to fetch articles');
+      return response.json();
+    },
     staleTime: 5 * 60 * 1000,
   });
 }
