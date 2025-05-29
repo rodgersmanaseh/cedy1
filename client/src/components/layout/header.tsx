@@ -18,7 +18,7 @@ export function Header() {
     { name: "Education", href: "/?category=education" },
     { name: "Entertainment", href: "/?category=entertainment" },
     { name: "Football", href: "/?category=football" },
-    { name: "More", href: "/?category=gossip" },
+    { name: "Gossip", href: "/?category=gossip" },
   ];
 
   return (

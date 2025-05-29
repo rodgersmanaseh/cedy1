@@ -12,13 +12,26 @@ interface UseArticlesOptions {
 export function useArticles(options: UseArticlesOptions = {}) {
   const { category = "all", status = "published", limit = 20, offset = 0, featured = false } = options;
   
-  const queryKey = featured 
-    ? ["/api/articles/featured", { limit }]
-    : ["/api/articles", { category, status, limit, offset }];
+  if (featured) {
+    return useQuery<Article[]>({
+      queryKey: ["/api/articles/featured", { limit }],
+      staleTime: 5 * 60 * 1000,
+    });
+  }
+
+  const queryParams = new URLSearchParams();
+  queryParams.set("limit", limit.toString());
+  queryParams.set("offset", offset.toString());
+  queryParams.set("status", status);
+  if (category && category !== "all") {
+    queryParams.set("category", category);
+  }
+
+  const queryKey = [`/api/articles?${queryParams.toString()}`];
 
   return useQuery<Article[]>({
     queryKey,
-    staleTime: 5 * 60 * 1000, // 5 minutes
+    staleTime: 5 * 60 * 1000,
   });
 }
 

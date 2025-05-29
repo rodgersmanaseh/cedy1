@@ -6,13 +6,20 @@ import { ArticleCard } from "@/components/article/article-card";
 import { CategoryTabs } from "@/components/ui/category-tabs";
 import { ReadingProgress } from "@/components/ui/reading-progress";
 import { useArticles } from "@/hooks/use-articles";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { ChevronDown } from "lucide-react";
+import { useLocation } from "wouter";
 
 export default function Home() {
-  const [selectedCategory, setSelectedCategory] = useState("all");
+  const [location, setLocation] = useLocation();
+  const urlParams = new URLSearchParams(location.split('?')[1] || '');
+  const categoryFromUrl = urlParams.get('category') || 'all';
+  
+  const [selectedCategory, setSelectedCategory] = useState(categoryFromUrl);
   const [page, setPage] = useState(1);
+  const [allArticles, setAllArticles] = useState([]);
+  const [hasMore, setHasMore] = useState(true);
   
   const { data: articles = [], isLoading } = useArticles({
     category: selectedCategory,
@@ -25,8 +32,42 @@ export default function Home() {
     limit: 3
   });
 
+  // Update URL when category changes
+  useEffect(() => {
+    if (selectedCategory !== categoryFromUrl) {
+      setSelectedCategory(categoryFromUrl);
+      setPage(1);
+    }
+  }, [categoryFromUrl]);
+
+  // Update articles when new data arrives
+  useEffect(() => {
+    if (articles) {
+      if (page === 1) {
+        setAllArticles(articles);
+      } else {
+        setAllArticles(prev => [...prev, ...articles]);
+      }
+      setHasMore(articles.length === 9); // If less than limit, no more pages
+    }
+  }, [articles, page]);
+
+  // Handle category change
+  const handleCategoryChange = (category: string) => {
+    setSelectedCategory(category);
+    setPage(1);
+    setAllArticles([]);
+    setHasMore(true);
+    
+    // Update URL
+    const newUrl = category === 'all' ? '/' : `/?category=${category}`;
+    setLocation(newUrl);
+  };
+
   const handleLoadMore = () => {
-    setPage(prev => prev + 1);
+    if (hasMore && !isLoading) {
+      setPage(prev => prev + 1);
+    }
   };
 
   return (
@@ -72,7 +113,7 @@ export default function Home() {
       {/* Category Tabs */}
       <CategoryTabs
         selectedCategory={selectedCategory}
-        onCategoryChange={setSelectedCategory}
+        onCategoryChange={handleCategoryChange}
       />
 
       <main className="container mx-auto px-4 py-8">
