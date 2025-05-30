@@ -1,47 +1,18 @@
-// tailwind.config.ts
-import type { Config } from "tailwindcss";
+:root {
+  --border: 220 14% 96%; /* example HSL values */
+  --input: 220 14% 96%;
+  --ring: 220 14% 96%;
+  --background: 0 0% 100%;
+  --foreground: 222 47% 11%;
+  --radius: 0.5rem;
+}
 
-const config: Config = {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}", // adjust path as needed
-  ],
-  theme: {
-    extend: {
-      colors: {
-        background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
-        muted: "hsl(var(--muted))",
-        "muted-foreground": "hsl(var(--muted-foreground))",
-        popover: "hsl(var(--popover))",
-        "popover-foreground": "hsl(var(--popover-foreground))",
-        card: "hsl(var(--card))",
-        "card-foreground": "hsl(var(--card-foreground))",
-        border: "hsl(var(--border))",
-        input: "hsl(var(--input))",
-        primary: "hsl(var(--primary))",
-        "primary-foreground": "hsl(var(--primary-foreground))",
-        secondary: "hsl(var(--secondary))",
-        "secondary-foreground": "hsl(var(--secondary-foreground))",
-        accent: "hsl(var(--accent))",
-        "accent-foreground": "hsl(var(--accent-foreground))",
-        destructive: "hsl(var(--destructive))",
-        "destructive-foreground": "hsl(var(--destructive-foreground))",
-        ring: "hsl(var(--ring))",
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-        // Kenya theme custom colors
-        "kenya-red": "hsl(var(--kenya-red))",
-        "kenya-green": "hsl(var(--kenya-green))",
-        "kenya-black": "hsl(var(--kenya-black))",
-        "warm-orange": "hsl(var(--warm-orange))",
-        "earth-brown": "hsl(var(--earth-brown))",
-      },
-      borderRadius: {
-        lg: "var(--radius)",
-      },
-    },
-  },
-  plugins: [require("@tailwindcss/typography")],
-};
-
-export default config;
+@layer utilities {
+  .border-border {
+    border-color: hsl(var(--border));
+  }
+}
