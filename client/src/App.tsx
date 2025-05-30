@@ -1,7 +1,7 @@
 import { Switch, Route } from "wouter";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
-import { Toaster } from "@/components/ui/toaster";
+import { Toaster } from "@/components/ui/Toaster"; // ✅ Corrected casing
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { ThemeProvider } from "./components/providers/theme-provider";
 import Home from "@/pages/home";
