@@ -1,180 +1,47 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+// tailwind.config.ts
+import type { Config } from "tailwindcss";
 
-:root {
-  /* Light mode colors */
-  --background: 0 0% 100%; /* #FFFFFF */
-  --foreground: 240 10% 3.9%; /* #0F0F0F */
-  --muted: 210 40% 98%; /* #F8FAFC */
-  --muted-foreground: 215.4 16.3% 46.9%; /* #64748B */
-  --popover: 0 0% 100%; /* #FFFFFF */
-  --popover-foreground: 240 10% 3.9%; /* #0F0F0F */
-  --card: 0 0% 100%; /* #FFFFFF */
-  --card-foreground: 240 10% 3.9%; /* #0F0F0F */
-  --border: 214.3 31.8% 91.4%; /* #E2E8F0 */
-  --input: 214.3 31.8% 91.4%; /* #E2E8F0 */
-  --primary: 5 74% 54%; /* #DC2626 - Kenya Red */
-  --primary-foreground: 0 0% 98%; /* #FAFAFA */
-  --secondary: 146 62% 39%; /* #059669 - Kenya Green */
-  --secondary-foreground: 0 0% 98%; /* #FAFAFA */
-  --accent: 214.3 31.8% 91.4%; /* #E2E8F0 */
-  --accent-foreground: 240 10% 3.9%; /* #0F0F0F */
-  --destructive: 0 84.2% 60.2%; /* #EF4444 */
-  --destructive-foreground: 0 0% 98%; /* #FAFAFA */
-  --ring: 5 74% 54%; /* #DC2626 */
-  --radius: 0.75rem;
+const config: Config = {
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}", // adjust path as needed
+  ],
+  theme: {
+    extend: {
+      colors: {
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
+        muted: "hsl(var(--muted))",
+        "muted-foreground": "hsl(var(--muted-foreground))",
+        popover: "hsl(var(--popover))",
+        "popover-foreground": "hsl(var(--popover-foreground))",
+        card: "hsl(var(--card))",
+        "card-foreground": "hsl(var(--card-foreground))",
+        border: "hsl(var(--border))",
+        input: "hsl(var(--input))",
+        primary: "hsl(var(--primary))",
+        "primary-foreground": "hsl(var(--primary-foreground))",
+        secondary: "hsl(var(--secondary))",
+        "secondary-foreground": "hsl(var(--secondary-foreground))",
+        accent: "hsl(var(--accent))",
+        "accent-foreground": "hsl(var(--accent-foreground))",
+        destructive: "hsl(var(--destructive))",
+        "destructive-foreground": "hsl(var(--destructive-foreground))",
+        ring: "hsl(var(--ring))",
 
-  /* Custom colors for Kenya theme */
-  --kenya-red: 5 74% 54%; /* #DC2626 */
-  --kenya-green: 146 62% 39%; /* #059669 */
-  --kenya-black: 240 6% 10%; /* #1A1A1A */
-  --warm-orange: 25 95% 53%; /* #FB923C */
-  --earth-brown: 25 40% 35%; /* #92400E */
-}
+        // Kenya theme custom colors
+        "kenya-red": "hsl(var(--kenya-red))",
+        "kenya-green": "hsl(var(--kenya-green))",
+        "kenya-black": "hsl(var(--kenya-black))",
+        "warm-orange": "hsl(var(--warm-orange))",
+        "earth-brown": "hsl(var(--earth-brown))",
+      },
+      borderRadius: {
+        lg: "var(--radius)",
+      },
+    },
+  },
+  plugins: [require("@tailwindcss/typography")],
+};
 
-.dark {
-  /* Dark mode colors */
-  --background: 240 10% 3.9%; /* #0A0A0A */
-  --foreground: 0 0% 98%; /* #FAFAFA */
-  --muted: 240 3.7% 15.9%; /* #262626 */
-  --muted-foreground: 240 5% 64.9%; /* #A3A3A3 */
-  --popover: 240 10% 3.9%; /* #0A0A0A */
-  --popover-foreground: 0 0% 98%; /* #FAFAFA */
-  --card: 240 10% 3.9%; /* #0A0A0A */
-  --card-foreground: 0 0% 98%; /* #FAFAFA */
-  --border: 240 3.7% 15.9%; /* #262626 */
-  --input: 240 3.7% 15.9%; /* #262626 */
-  --primary: 5 74% 54%; /* #DC2626 - Kenya Red */
-  --primary-foreground: 0 0% 98%; /* #FAFAFA */
-  --secondary: 146 62% 39%; /* #059669 - Kenya Green */
-  --secondary-foreground: 0 0% 98%; /* #FAFAFA */
-  --accent: 240 3.7% 15.9%; /* #262626 */
-  --accent-foreground: 0 0% 98%; /* #FAFAFA */
-  --destructive: 0 62.8% 30.6%; /* #991B1B */
-  --destructive-foreground: 0 0% 98%; /* #FAFAFA */
-  --ring: 5 74% 54%; /* #DC2626 */
-}
-
-@layer base {
-  * {
-    @apply border; /* ✅ FIXED: replaced invalid `border-border` */
-  }
-
-  body {
-    @apply bg-background text-foreground;
-    font-feature-settings: "rlig" 1, "calt" 1;
-    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  }
-
-  h1, h2, h3, h4, h5, h6 {
-    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  }
-}
-
-@layer components {
-  .kenya-gradient {
-    @apply bg-gradient-to-r from-red-600 to-green-600;
-  }
-
-  .reading-progress {
-    background: linear-gradient(90deg, hsl(var(--kenya-red)) 0%, hsl(var(--kenya-green)) 100%);
-    height: 3px;
-    transform-origin: left;
-    transition: transform 0.1s ease-out;
-  }
-
-  .article-content {
-    @apply prose prose-lg max-w-none dark:prose-invert;
-  }
-
-  .article-content h1 {
-    @apply text-3xl font-bold mb-6 text-foreground;
-  }
-
-  .article-content h2 {
-    @apply text-2xl font-semibold mb-4 mt-8 text-foreground;
-  }
-
-  .article-content h3 {
-    @apply text-xl font-medium mb-3 mt-6 text-foreground;
-  }
-
-  .article-content p {
-    @apply mb-4 leading-relaxed text-muted-foreground;
-  }
-
-  .article-content ul, .article-content ol {
-    @apply mb-4 pl-6;
-  }
-
-  .article-content li {
-    @apply mb-2;
-  }
-
-  .article-content blockquote {
-    @apply border-l-4 border-primary pl-4 italic text-muted-foreground;
-  }
-
-  .category-politics {
-    @apply bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200;
-  }
-
-  .category-education {
-    @apply bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200;
-  }
-
-  .category-entertainment {
-    @apply bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200;
-  }
-
-  .category-gossip {
-    @apply bg-pink-100 text-pink-800 dark:bg-pink-900 dark:text-pink-200;
-  }
-
-  .category-football {
-    @apply bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200;
-  }
-
-  .scrollbar-hide {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-
-  .scrollbar-hide::-webkit-scrollbar {
-    display: none;
-  }
-
-  .animate-marquee {
-    animation: marquee 30s linear infinite;
-  }
-
-  @keyframes marquee {
-    0% {
-      transform: translateX(100%);
-    }
-    100% {
-      transform: translateX(-100%);
-    }
-  }
-
-  .line-clamp-2 {
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-
-  .line-clamp-3 {
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-}
+export default config;
